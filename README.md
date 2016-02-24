@@ -10,3 +10,7 @@ React example application from "React for Beginners" series
 ## History
 
 `npm install history` (uses pushState)
+
+## Helpers
+
+`helpers.js` helper functions
