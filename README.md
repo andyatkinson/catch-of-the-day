@@ -14,3 +14,7 @@ React example application from "React for Beginners" series
 ## Helpers
 
 `helpers.js` helper functions
+
+`require('./helpers')` requiring a local relative (sibling) file
+
+`refs`
