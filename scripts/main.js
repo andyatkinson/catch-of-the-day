@@ -29,6 +29,9 @@ var App = React.createClass({
     // set the state, this.state is entire state, but we should pass just the changes
     this.setState({ fishes: this.state.fishes });
   },
+  loadSamples: function() {
+    this.setState({ fishes: require('./sample-fishes.js') });
+  },
 
   render : function() {
     return (
@@ -37,7 +40,7 @@ var App = React.createClass({
           <Header tagLine="fresh seafood market"/>
         </div>
         <Order/>
-        <Inventory addFish={this.addFish}/>
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples}/>
       </div>
     );
   }
@@ -123,6 +126,7 @@ var Inventory = React.createClass({
       <div>
         <h2>Inventory</h2>
         <AddFishForm {...this.props} />
+        <button onClick={this.props.loadSamples}>Load sample fishes</button>
       </div>
     );
   }
