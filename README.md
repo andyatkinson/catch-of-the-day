@@ -24,3 +24,15 @@ React example application from "React for Beginners" series
 "Spread" = `{...this.props}` passes the props through, alternative to passing functions from parent component to child component one by one.
 
 In Chrome React dev tools, can search for components on bottom.
+
+React component lifecyle - hooks to get in to the component at different points in time
+
+e.g. render(), getInitialState() (right before component is mounted)
+
+Syncing state
+
+`componentDidMount()` invoked once on the client, after rendering occurs (in this example, we fetch the data from firebase)
+
+Would put the ajax request in there too.
+
+
