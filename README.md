@@ -18,3 +18,7 @@ React example application from "React for Beginners" series
 `require('./helpers')` requiring a local relative (sibling) file
 
 `refs`
+
+`getInitialState` part of the react lifecycle
+
+"Spread" = `{...this.props}` passes the props through, alternative to passing functions from parent component to child component one by one.
