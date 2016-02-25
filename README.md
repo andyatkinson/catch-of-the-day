@@ -22,3 +22,5 @@ React example application from "React for Beginners" series
 `getInitialState` part of the react lifecycle
 
 "Spread" = `{...this.props}` passes the props through, alternative to passing functions from parent component to child component one by one.
+
+In Chrome React dev tools, can search for components on bottom.
