@@ -35,4 +35,8 @@ Syncing state
 
 Would put the ajax request in there too.
 
+`componentWillUpdate` lifecycle event, props changes, state changes, this runs, passes new props and new state
+
+`shouldComponentUpdate`
+
 
