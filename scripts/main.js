@@ -60,6 +60,16 @@ var App = React.createClass({
     // set the state, this.state is entire state, but we should pass just the changes
     this.setState({ fishes: this.state.fishes });
   },
+  removeFromOrder : function(key) {
+    delete this.state.order[key];
+    this.setState({ order: this.state.order });
+  },
+  removeFish: function(key) {
+    if(confirm('Are you sure you want to remove this fish?')) {
+      this.state.fishes[key] = null; //deletes the item
+      this.setState({fishes: this.state.fishes});
+    }
+  },
   loadSamples: function() {
     this.setState({ fishes: require('./sample-fishes.js') });
   },
@@ -76,8 +86,11 @@ var App = React.createClass({
             {Object.keys(this.state.fishes).map(this.renderFish)}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
-        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} fishes={this.state.fishes} linkState={this.linkState} />
+        <Order fishes={this.state.fishes} order={this.state.order} removeFromOrder={this.removeFromOrder} />
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples}
+          fishes={this.state.fishes}
+          linkState={this.linkState}
+          removeFish={this.removeFish}/>
       </div>
     );
   }
@@ -178,9 +191,10 @@ var Order = React.createClass({
   renderOrder : function(key) {
     var fish = this.props.fishes[key];
     var count = this.props.order[key];
+    var removeButton = <button onClick={this.props.removeFromOrder.bind(null, key)}>&times;</button>;
 
     if(!fish) {
-      return <li key={key}>Sorry, fish no longer available.</li>;
+      return <li key={key}>Sorry, fish no longer available. {removeButton}</li>;
     }
 
     return (
@@ -188,6 +202,7 @@ var Order = React.createClass({
           <span>{count}</span>lbs
           {fish.name}
           <span className='price'>{h.formatPrice(count * fish.price)}</span>
+          {removeButton}
         </li>
     );
   },
@@ -234,6 +249,7 @@ var Inventory = React.createClass({
         </select>
         <input type='textarea' valueLink={linkState('fishes.' + key + '.desc')} />
         <input type='text' valueLink={linkState('fishes.' + key + '.image')} />
+        <button onClick={this.props.removeFish.bind(null, key)}>Remove Fish</button>
       </div>
     );
   },
