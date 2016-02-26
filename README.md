@@ -45,3 +45,7 @@ React Catalyst - mixin - deep nest listeners
 
 Prop validation
 Component validation - required props, type checking on props, `React.PropTypes.*`
+
+ES6 and Babel, babeljs.io
+
+ES6 de-structuring to import just specific modules
