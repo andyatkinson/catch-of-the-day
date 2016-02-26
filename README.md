@@ -43,4 +43,5 @@ Bi-directional data flow - ReactLink (link state)
 
 React Catalyst - mixin - deep nest listeners
 
-
+Prop validation
+Component validation - required props, type checking on props, `React.PropTypes.*`

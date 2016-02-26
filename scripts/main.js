@@ -181,6 +181,10 @@ var Header = React.createClass({
         <h3 className="tagline">{this.props.tagLine}</h3>
       </header>
     );
+  },
+
+  propTypes: {
+    tagLine: React.PropTypes.string.isRequired
   }
 });
 
@@ -208,6 +212,7 @@ var Order = React.createClass({
             lbs {fish.name} {removeButton}
           </span>
           <span className='price'>{h.formatPrice(count * fish.price)}</span>
+
         </li>
     );
   },
@@ -236,11 +241,17 @@ var Order = React.createClass({
         </CSSTransitionGroup>
       </div>
     );
+  },
+  propTypes: {
+    fishes: React.PropTypes.object.isRequired,
+    order: React.PropTypes.object.isRequired,
+    removeFromOrder: React.PropTypes.func.isRequired
   }
 });
 
 /*
 * Inventory
+* <Inventory />
 */
 
 var Inventory = React.createClass({
@@ -252,9 +263,9 @@ var Inventory = React.createClass({
         <input type='text' valueLink={linkState('fishes.' + key + '.price')} />
         <select valueLink={linkState('fishes.'+ key +'.status')}>
           <option value='unavailable'>Sold out!</option>
-          <option value='available' selected='selected'>Fresh!</option>
+          <option value='available'>Fresh!</option>
         </select>
-        <input type='textarea' valueLink={linkState('fishes.' + key + '.desc')} />
+        <textarea valueLink={linkState('fishes.' + key + '.desc')} />
         <input type='text' valueLink={linkState('fishes.' + key + '.image')} />
         <button onClick={this.props.removeFish.bind(null, key)}>Remove Fish</button>
       </div>
@@ -269,6 +280,13 @@ var Inventory = React.createClass({
         <button onClick={this.props.loadSamples}>Load sample fishes</button>
       </div>
     );
+  },
+  propTypes: {
+    addFish: React.PropTypes.func.isRequired,
+    loadSamples: React.PropTypes.func.isRequired,
+    fishes: React.PropTypes.object.isRequired,
+    linkState: React.PropTypes.func.isRequired,
+    removeFish: React.PropTypes.func.isRequired
   }
 });
 
