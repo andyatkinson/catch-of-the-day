@@ -39,4 +39,8 @@ Would put the ajax request in there too.
 
 `shouldComponentUpdate`
 
+Bi-directional data flow - ReactLink (link state)
+
+React Catalyst - mixin - deep nest listeners
+
 
