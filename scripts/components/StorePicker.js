@@ -1,29 +1,31 @@
-import React from 'react';
-import { Navigation } from 'react-router';
-import h from '../helpers';
-
 /* StorePicker
 */
 
-var StorePicker = React.createClass({
-  mixins: [Navigation],
+import React from 'react';
+import { Navigation } from 'react-router';
+import h from '../helpers';
+import reactMixin from 'react-mixin';
 
-  goToStore : function(e) {
+class StorePicker extends React.Component {
+
+  goToStore(e) {
     e.preventDefault();
 
     var storeId = this.refs.storeId.value;
-    this.history.pushState(null, '/store/' + storeId);
-  },
+    this.props.history.pushState(null, '/store/' + storeId);
+  }
 
-  render : function() {
+  render() {
     return (
-      <form className='store-selector' onSubmit={this.goToStore}>
+      <form className='store-selector' onSubmit={this.goToStore.bind(this)}>
         <h2>Please enter a store</h2>
         <input type='text' ref='storeId' required defaultValue={h.getFunName()} />
         <input type='Submit' />
       </form>
-    );
+    )
   }
-});
+}
+
+reactMixin.onClass(StorePicker, History);
 
 export default StorePicker;

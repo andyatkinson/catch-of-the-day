@@ -1,5 +1,11 @@
 React example application from "React for Beginners" series
 
+## Running the app
+
+`npm install`
+
+`gulp` - start up the gulp server to automatically reload JS and CSS
+
 ## Tips
 
  * Check react dev tool for variables like `$r` to be able to log out a component. Can inspect the component properties.
