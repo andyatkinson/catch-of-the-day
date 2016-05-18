@@ -6,13 +6,13 @@
 import React from 'react';
 import h from '../helpers';
 
-var Fish = React.createClass({
-  onButtonClick : function(key) {
+class Fish extends React.Component {
+  onButtonClick(key) {
     key = this.props.index;
     this.props.addToOrder(key);
-  },
+  }
 
-  render : function() {
+  render() {
     var details = this.props.details;
     var isAvailable = (details.status === 'available' ? true : false);
     var buttonText = (isAvailable ? 'Add to Order' : 'Sold Out!');
@@ -25,10 +25,10 @@ var Fish = React.createClass({
           <span className='price'>{h.formatPrice(details.price)}</span>
         </h3>
         <p>{details.desc}</p>
-        <button disabled={!isAvailable} onClick={this.onButtonClick}>{buttonText}</button>
+        <button disabled={!isAvailable} onClick={this.onButtonClick.bind(this)}>{buttonText}</button>
       </li>
     );
   }
-});
+}
 
 export default Fish;
