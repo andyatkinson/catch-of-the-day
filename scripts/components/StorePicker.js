@@ -5,7 +5,9 @@ import React from 'react';
 import { Navigation } from 'react-router';
 import h from '../helpers';
 import reactMixin from 'react-mixin';
+import autobind from 'autobind-decorator';
 
+@autobind
 class StorePicker extends React.Component {
 
   goToStore(e) {
@@ -17,7 +19,7 @@ class StorePicker extends React.Component {
 
   render() {
     return (
-      <form className='store-selector' onSubmit={this.goToStore.bind(this)}>
+      <form className='store-selector' onSubmit={this.goToStore}>
         <h2>Please enter a store</h2>
         <input type='text' ref='storeId' required defaultValue={h.getFunName()} />
         <input type='Submit' />
